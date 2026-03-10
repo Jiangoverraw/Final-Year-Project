@@ -38,23 +38,23 @@ URP is used to:
 
 The gameplay loop defines the main player experience.
 Start Game
-↓
+→
 Join Lobby
-↓
+→
 Spawn in Mission Area
-↓
+→
 Explore the Map
-↓
+→
 Find Valuable Items
-↓
+→
 Cooperate to Carry Heavy Objects
-↓
+→
 Avoid or Escape Monsters
-↓
+→
 Deliver Loot to Extraction Zone
-↓
+→
 Receive Money / Rewards
-↓
+→
 Start Next Mission
 
 ---
@@ -290,19 +290,19 @@ Room modules include:
 
 ## Map Generation Process
 Start Game
-↓
+→
 Create Map Grid
-↓
+→
 Spawn Starting Room
-↓
+→
 Attach Random Rooms
-↓
+→
 Validate Room Connections
-↓
+→
 Spawn Loot Points
-↓
+→
 Spawn Enemy Locations
-↓
+→
 Spawn Exit Point
 
 
