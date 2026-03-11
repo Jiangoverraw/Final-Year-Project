@@ -1,404 +1,426 @@
-# Game Kinh Dị Hợp Tác (Lấy Cảm Hứng từ MIMESIS)
+# Cooperative Horror Game (Inspired by MIMESIS)
 
-## Tổng Quan Dự Án
+## Project Overview
 
-Dự án này là một **trò chơi kinh dị co-op nhiều người chơi** được phát triển bằng **Unity Engine**.  
-Gameplay tập trung vào việc **hợp tác giữa người chơi, khám phá môi trường nguy hiểm và thu thập vật phẩm có giá trị**, đồng thời phải tránh các sinh vật nguy hiểm.
+This project is a **multiplayer cooperative horror game** developed using **Unity Engine**. The gameplay focuses on **teamwork, exploration, loot extraction, and psychological horror**, where players must work together to collect valuable items and escape dangerous environments while avoiding hostile creatures.
 
-Thiết kế gameplay lấy cảm hứng từ **MIMESIS**, một trò chơi kinh dị tâm lý nơi người chơi không thể hoàn toàn tin tưởng đồng đội của mình.
+The design is inspired by **MIMESIS**, a psychological horror co-op game where trust between players becomes uncertain.
 
-Một cơ chế quan trọng của trò chơi là **quái vật có thể giả dạng người chơi và bắt chước giọng nói mà người chơi đã nói trước đó**, tạo nên yếu tố kinh dị tâm lý và sự nghi ngờ giữa các thành viên trong nhóm.
-
----
-
-# Nền Tảng
-
-PC (Windows)
+One of the core mechanics of this project is a **monster that can disguise itself as a player and replay previously recorded voice lines**, creating tension, paranoia, and misinformation within the team.
 
 ---
 
-# Game Engine
+## Platform
 
-Unity LTS  
-Rendering Pipeline: **Universal Render Pipeline (URP)**
-
-URP được sử dụng để:
-
-- Tối ưu hiệu năng
-- Cải thiện hệ thống ánh sáng cho môi trường kinh dị
-- Áp dụng các hiệu ứng hậu kỳ như:
-  - Film Grain
-  - Chromatic Aberration
-  - Fog
-  - Color Grading
+**PC (Windows)**
 
 ---
-
-# Gameplay Loop
-
-Gameplay Loop mô tả chu trình trải nghiệm chính của người chơi trong game.
-
-Start Game
-→
-Join Lobby
-→
-Spawn in Mission Area
-→
-Explore the Map
-→
-Find Valuable Items
-→
-Cooperate to Carry Heavy Objects
-→
-Avoid or Escape Monsters
-→
-Deliver Loot to Extraction Zone
-→
-Receive Money / Rewards
-→
-Start Next Mission
-
----
-
-
----
-
-# Các Tính Năng Gameplay
-
-## Khám Phá (Exploration)
-
-Người chơi sẽ khám phá những môi trường nguy hiểm như:
-
-- Nhà máy bỏ hoang  
-- Phòng thí nghiệm  
-- Kho công nghiệp  
-
-Các bản đồ sẽ được **tạo ngẫu nhiên (procedural generation)** để tăng tính chơi lại.
-
----
-
-## Hệ Thống Loot
-
-Mỗi vật phẩm có **trọng lượng và giá trị khác nhau**.
-
-| Vật phẩm | Trọng lượng | Giá trị |
-|---------|-------------|--------|
-Laptop | Trung bình | 100 |
-Máy phát điện | Nặng | 300 |
-Ổ dữ liệu | Nhẹ | 50 |
-
-Một số vật phẩm cần **2 người khiêng cùng lúc**.
-
----
-
-## Gameplay Hợp Tác
-
-Người chơi cần giao tiếp và phối hợp để:
-
-- Khiêng vật nặng
-- Khám phá khu vực nguy hiểm
-- Trốn khỏi quái vật
-- Hoàn thành nhiệm vụ
-
-Tinh thần **teamwork** là yếu tố quan trọng để sống sót.
-
----
-
-# Hệ Thống Quái Vật Giả Dạng (Mimic Monster)
-
-Một cơ chế kinh dị quan trọng của game là **quái vật có khả năng giả dạng người chơi**.
-
-Quái vật có thể:
-
-- Sao chép ngoại hình người chơi
-- Bắt chước chuyển động
-- Phát lại giọng nói người chơi đã nói trước đó
-
-Cơ chế này tạo nên **sự căng thẳng và nghi ngờ trong nhóm người chơi**.
-
----
-
-## Các Giai Đoạn Hoạt Động Của Quái Vật
-
-### Quan Sát (Observation)
-
-Quái vật theo dõi người chơi và ghi lại voice chat.
-
----
-
-### Giả Dạng (Mimic)
-
-Quái vật chọn một người chơi và sao chép:
-
-- Model nhân vật
-- Animation
-- Tên người chơi
-
-Sau đó nó **trộn vào nhóm người chơi**.
-
----
-
-### Bắt Chước Giọng Nói (Voice Mimic)
-
-Quái vật có thể phát lại voice chat trước đó.
-
-Ví dụ:
-
-Người chơi đã nói:
-
-> "Lại đây, tôi tìm thấy vật gì đó."
-
-Sau đó quái vật có thể lặp lại câu này để dụ người chơi khác.
-
----
-
-### Tấn Công (Attack)
-
-Khi người chơi tiến lại gần:
-
-- Quái vật lộ diện
-- Tấn công bất ngờ
-
----
-
-# Công Nghệ Sử Dụng
 
 ## Game Engine
 
-Unity LTS với URP.
+**Unity LTS**
+**Rendering Pipeline:** Universal Render Pipeline (**URP**)
+
+URP is used to:
+
+* Optimize performance
+* Improve lighting for horror environments
+* Support post-processing effects such as:
+
+  * Film Grain
+  * Chromatic Aberration
+  * Fog
+  * Color Grading
 
 ---
 
-## Multiplayer
+## Core Gameplay Loop
 
-Sử dụng **Photon Fusion 2**.
-
-Tính năng:
-
-- Multiplayer real-time
-- Lobby system
-- Đồng bộ người chơi
-- Đồng bộ vật thể
-
----
-
-## Hệ Thống Vật Lý
-
-Sử dụng **Unity Rigidbody Physics**.
-
-Ứng dụng cho:
-
-- Tương tác vật thể
-- Khiêng vật phẩm
-- Va chạm môi trường
-
-Cơ chế nhặt vật sử dụng:
-
-- Rigidbody
-- Configurable Joint
+```text
+Start Game
+→ Join Lobby
+→ Spawn in Mission Area
+→ Explore the Map
+→ Find Valuable Items
+→ Cooperate to Carry Heavy Objects
+→ Avoid or Escape Monsters
+→ Deliver Loot to Extraction Zone
+→ Receive Money / Rewards
+→ Start Next Mission
+```
 
 ---
 
-## AI
+## Gameplay Features
 
-AI sử dụng **Unity NavMesh System**.
+### Exploration
 
-Chức năng:
+Players explore dangerous environments such as:
 
-- Pathfinding
-- Phát hiện người chơi
-- Tấn công
-- Hành vi giả dạng
+* Abandoned factories
+* Laboratories
+* Industrial warehouses
 
----
-
-## Voice Chat
-
-Sử dụng **Photon Voice 2**.
-
-Hỗ trợ:
-
-- Voice chat theo khoảng cách (proximity voice)
-- Spatial audio
-- Ghi âm voice
+These environments are designed to support **procedural or semi-procedural generation** for replayability.
 
 ---
 
-# Hệ Thống Voice Mimic
+### Loot System
 
-Quái vật có thể phát lại giọng nói người chơi.
+Items have **weight** and **value**, affecting how players carry and prioritize them.
 
-## Ghi Âm Voice
+| Item      | Weight | Value |
+| --------- | ------ | ----- |
+| Laptop    | Medium | 100   |
+| Generator | Heavy  | 300   |
+| Data Disk | Light  | 50    |
 
-Voice chat được lưu vào buffer.
-
-Player1
-clip1
-clip2
-clip3
-
----
-
+Some items require **two players to carry together**.
 
 ---
 
-## Phát Lại Voice
+### Cooperative Gameplay
 
-Quái vật:
+Players must communicate and cooperate to:
 
-1. Lấy clip từ buffer  
-2. Phát lại bằng Audio Source  
-3. Áp dụng 3D spatial audio  
+* Carry heavy objects
+* Navigate dangerous environments
+* Escape enemies
+* Complete missions efficiently
 
-Âm thanh sẽ giống như phát ra từ vị trí của quái vật.
+Teamwork is essential for survival and success.
 
 ---
 
-# Game Architecture
+## Mimic Monster System
+
+One of the most important horror mechanics in the game is the **Mimic Monster**.
+
+This creature can:
+
+* Copy the appearance of a player
+* Mimic player movement
+* Replay previously recorded voice lines from players
+
+This mechanic introduces **psychological horror**, where players cannot always trust their teammates.
+
+---
+
+## Mimic Behaviour Phases
+
+### Observation
+
+The monster secretly observes players and records their voice chat patterns.
+
+### Mimic
+
+The monster selects a nearby or isolated player and copies:
+
+* Character model
+* Basic animation behavior
+* Player display name
+
+It then attempts to blend into the group.
+
+### Voice Mimic
+
+The monster can replay recorded voice lines.
+
+Example:
+
+> "Come here, I found something."
+
+Later, the monster may repeat the same sentence to lure another player away from the team.
+
+### Attack
+
+Once a player approaches or becomes isolated, the monster reveals itself and attacks.
+
+---
+
+## Technology Stack
+
+### Game Engine
+
+* Unity LTS
+* Universal Render Pipeline (URP)
+
+### Networking
+
+**Photon Fusion 2**
+
+Used for:
+
+* Multiplayer networking
+* Lobby system
+* Player synchronization
+* Object synchronization
+* Host-authoritative gameplay logic
+
+### Physics System
+
+**Unity Rigidbody Physics**
+
+Used for:
+
+* Object interactions
+* Loot carrying
+* Environmental physics
+
+Grab interactions are implemented using:
+
+* Rigidbody
+* Configurable Joint
+
+### Artificial Intelligence
+
+**Unity NavMesh System**
+
+AI features include:
+
+* Pathfinding
+* Player detection
+* Chase/attack behavior
+* Mimic/disguise logic
+
+### Voice Chat System
+
+**Photon Voice 2**
+
+Supports:
+
+* Proximity voice chat
+* Spatial audio
+* Voice transmission between players
+
+---
+
+## Voice Mimic System
+
+The monster can replay previously recorded player voices.
+
+### Voice Recording
+
+Player voice chat is recorded into a short-term buffer.
+
+Example structure:
+
+```text
+VoiceBuffer
+├── Player1
+│   ├── clip1
+│   ├── clip2
+│   └── clip3
+├── Player2
+│   ├── clip1
+│   └── clip2
+```
+
+### Voice Playback
+
+The Mimic selects a random or context-relevant audio clip from the target player's buffer and plays it back using **3D spatial audio** from the monster's position.
+
+This makes the sound appear to come from somewhere in the environment, increasing tension and uncertainty.
+
+---
+
+## Game Architecture
+
+```text
 Player Client
 │
-Input System
+├── Input System
+├── Player Controller
+├── Gameplay Systems
+│   ├── Physics System
+│   ├── AI System
+│   └── Loot System
 │
-Player Controller
-│
-Gameplay Systems
-│
-├── Physics System
-├── AI System
-├── Loot System
-│
-Networking Layer (Photon Fusion)
-│
-Game Host
+└── Networking Layer (Photon Fusion)
+    └── Game Host
+```
 
 ---
 
-# System Architecture
+## System Architecture
+
+```text
 Player Client
 │
-Networking Layer
-│
+├── Networking Layer
 ├── Physics System
 ├── AI System
 ├── Voice Chat System
-│
-Game Manager
-
-
----
-
-# Procedural Map Generation
-
-Game sử dụng **procedural generation** để tạo bản đồ ngẫu nhiên.
-
-Các module phòng:
-
-- Corridor (Hành lang)
-- Storage Room (Kho)
-- Control Room (Phòng điều khiển)
-- Laboratory (Phòng thí nghiệm)
+└── Game Manager
+```
 
 ---
 
-## Quy Trình Tạo Bản Đồ
+## Procedural Map Generation
+
+The game uses **modular procedural generation** to create replayable maps.
+
+### Room Modules
+
+* Corridor
+* Storage Room
+* Control Room
+* Laboratory
+* Power Room
+* Extraction Room
+
+### Map Generation Process
+
+```text
 Start Game
-→
-Create Map Grid
-→
-Spawn Starting Room
-→
-Attach Random Rooms
-→
-Validate Room Connections
-→
-Spawn Loot Points
-→
-Spawn Enemy Locations
-→
-Spawn Exit Point
+→ Create Map Grid / Seed
+→ Spawn Starting Room
+→ Attach Random Rooms
+→ Validate Room Connections
+→ Spawn Loot Points
+→ Spawn Enemy Locations
+→ Spawn Exit / Extraction Point
+```
 
+For prototype scope, a **semi-procedural modular approach** is recommended to keep the system stable and production-friendly.
 
 ---
 
+## Team Work Distribution
+
+The project is developed by **two team members**, with responsibilities split evenly.
+
+### Member 1 – Gameplay & Physics Programmer
+
+Responsibilities:
+
+* Player Controller
+* Camera System
+* Object Interaction System
+* Loot System
+* Cooperative Carry System
+* Gameplay UI
+* Mission Logic
+
+Technologies used:
+
+* Unity Physics
+* Animation Rigging
+* Unity UI / TextMeshPro
+
+### Member 2 – Multiplayer & AI Programmer
+
+Responsibilities:
+
+* Photon Fusion Networking
+* Lobby System
+* Player Synchronization
+* Object Network Sync
+* Enemy AI
+* Mimic Monster System
+* Voice Mimic System
+* Procedural Map Generation
+
+Technologies used:
+
+* Photon Fusion 2
+* Photon Voice 2
+* NavMesh AI
 
 ---
 
-# Phân Chia Công Việc
+## Development Timeline (10 Weeks)
 
-Dự án được thực hiện bởi **2 thành viên**, mỗi người phụ trách khoảng **50% hệ thống game**.
+### Week 1–2
 
----
+* Project setup
+* Player controller
+* Physics interaction
+* Basic loot handling
 
-## Thành viên 1 – Gameplay & Physics
+### Week 3–4
 
-Nhiệm vụ:
+* Multiplayer lobby system
+* Player synchronization
+* Networked loot interaction
 
-- Player Controller
-- Camera System
-- Object Interaction
-- Loot System
-- Cooperative Carry System
-- Gameplay UI
-- Mission Logic
+### Week 5–6
 
-Công nghệ:
+* Loot system refinement
+* Cooperative carry mechanics
+* Basic enemy AI
 
-- Unity Physics
-- Animation Rigging
-- Unity UI
+### Week 7–8
 
----
+* Mimic monster system
+* Disguise behavior
+* Voice chat integration
 
-## Thành viên 2 – Multiplayer & AI
+### Week 9–10
 
-Nhiệm vụ:
-
-- Photon Fusion Networking
-- Lobby System
-- Player Synchronization
-- Object Network Sync
-- Enemy AI
-- Mimic Monster System
-- Voice Mimic System
-- Procedural Map Generation
-
-Công nghệ:
-
-- Photon Fusion
-- Photon Voice
-- NavMesh AI
+* Voice mimic system
+* Procedural map generation
+* Bug fixing
+* Performance optimization
+* Final build preparation
 
 ---
 
-# Timeline Phát Triển (10 Tuần)
+## Prototype Scope
 
-## Tuần 1–2
-- Setup project
-- Player controller
-- Physics interaction
+The initial playable prototype should include:
 
----
-
-## Tuần 3–4
-- Multiplayer lobby
-- Player synchronization
-
----
-
-## Tuần 5–6
-- Loot system
-- Cooperative carry mechanics
+* 1 playable environment theme (recommended: **Abandoned Laboratory**)
+* 2-player co-op support
+* Lobby creation and joining
+* Light, medium, and heavy loot items
+* Extraction zone and reward calculation
+* 1 Mimic monster with disguise and reveal behavior
+* Proximity voice chat
+* Basic modular map generation
 
 ---
 
-## Tuần 7–8
-- Enemy AI
-- Mimic monster system
+## Design Goals
+
+The prototype is considered successful if it can demonstrate:
+
+1. A stable multiplayer co-op session
+2. A complete loot extraction loop
+3. At least one heavy object requiring teamwork
+4. A Mimic enemy that can impersonate a player
+5. A voice-based deception mechanic that creates psychological tension
 
 ---
 
-## Tuần 9–10
-- Voice mimic system
-- Bug fixing
-- Optimization
-- Final build
+## Future Expansion
+
+Possible future features beyond the prototype:
+
+* More enemy types
+* More map themes
+* Expanded mission variety
+* Equipment and progression system
+* Enhanced voice manipulation and deception behaviors
+* More advanced procedural generation
+
+---
+
+## Repository Notes
+
+This README is intended to serve as the **high-level proposal and project overview** for the GitHub repository.
+
+Recommended additional documents for the repository:
+
+* `GDD.md` — full Game Design Document
+* `TDD.md` — Technical Design Document
+* `TASK_BOARD.md` — production schedule and task breakdown
+* `TEST_PLAN.md` — playtest and QA checklist
+
+---
+
+## Status
+
+**Current Stage:** Pre-Production / Prototype Planning
+
+The current focus is on building a **playable vertical slice** that proves the project’s core mechanics and horror identity.
